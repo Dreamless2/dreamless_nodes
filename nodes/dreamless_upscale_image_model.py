@@ -1,0 +1,174 @@
+import torch
+import folder_paths
+import torch.nn.functional as F
+
+from comfy_extras.nodes_upscale_model import UpscaleModelLoader, ImageUpscaleWithModel
+
+MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
+
+
+class Dreamless_Upscale_Image_Model:
+    DESCRIPTION = (
+        "Upscale an image to a specific width and height using an upscale model and resize methods. "
+        "Set tile_size > 0 to process in tiles (recommended for low VRAM)."
+    )
+
+    def __init__(self):
+        self.model_loader = UpscaleModelLoader()
+        self.upscaler = ImageUpscaleWithModel()
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "image": ("IMAGE",),
+                "upscale_model": (folder_paths.get_filename_list("upscale_models"),),
+                "upscale_method": (
+                    ["nearest_exact", "bilinear", "area", "bicubic", "lanczos"],
+                    {"default": "bicubic"},
+                ),
+                "width": ("INT", {"default": 1024, "min": 64, "max": 8192, "step": 8}),
+                "height": ("INT", {"default": 1024, "min": 64, "max": 8192, "step": 8}),
+                "crop": (["disabled", "center"], {"default": "disabled"}),
+                "tile_size": (
+                    "INT",
+                    {
+                        "default": 0,
+                        "min": 0,
+                        "max": 2048,
+                        "step": 32,
+                        "tooltip": "Tile size for tiled upscale. 0 = disabled (full image).",
+                    },
+                ),
+                "tile_overlap": (
+                    "INT",
+                    {
+                        "default": 32,
+                        "min": 0,
+                        "max": 256,
+                        "step": 8,
+                        "tooltip": "Overlap between tiles in pixels to avoid seams.",
+                    },
+                ),
+            }
+        }
+
+    RETURN_TYPES = ("IMAGE",)
+    RETURN_NAMES = ("IMAGE",)
+    FUNCTION = "upscale"
+    CATEGORY = "Dreamless/Postprocessing"
+
+    def upscale(
+        self,
+        image,
+        upscale_model,
+        upscale_method,
+        width,
+        height,
+        crop,
+        tile_size,
+        tile_overlap,
+    ):
+        print(f"{MSG_PREFIX}Loading upscale model: {upscale_model}")
+        model_loaded = self.model_loader.load_model(upscale_model)[0]
+
+        if tile_size > 0:
+            print(
+                f"{MSG_PREFIX}Using tiled upscale (tile={tile_size}, overlap={tile_overlap})..."
+            )
+            model_upscaled = self._upscale_tiled(
+                model_loaded, image, tile_size, tile_overlap
+            )
+        else:
+            print(f"{MSG_PREFIX}Applying full image model upscale...")
+            model_upscaled = self.upscaler.upscale(model_loaded, image)[0]
+
+        samples = model_upscaled.permute(0, 3, 1, 2)
+
+        if crop == "center":
+            old_width = samples.shape[3]
+            old_height = samples.shape[2]
+            old_aspect = old_width / old_height
+            new_aspect = width / height
+
+            if old_aspect > new_aspect:
+                crop_width = int(old_height * new_aspect)
+                crop_x = (old_width - crop_width) // 2
+                samples = samples[:, :, :, crop_x : crop_x + crop_width]
+            else:
+                crop_height = int(old_width / new_aspect)
+                crop_y = (old_height - crop_height) // 2
+                samples = samples[:, :, crop_y : crop_y + crop_height, :]
+
+        print(
+            f"{MSG_PREFIX}Resizing to final dimensions: {width}x{height} via {upscale_method}..."
+        )
+        samples = F.interpolate(
+            samples,
+            size=(height, width),
+            mode=upscale_method,
+            align_corners=(
+                False if upscale_method not in ("nearest_exact", "area") else None
+            ),
+        )
+
+        output_image = samples.permute(0, 2, 3, 1)
+        output_image = torch.clamp(output_image, 0.0, 1.0)
+
+        return (output_image,)
+
+    def _upscale_tiled(self, model, image, tile_size, overlap):
+        b, h, w, c = image.shape
+        scale = self._detect_model_scale(model, image)
+
+        out_h = h * scale
+        out_w = w * scale
+        output = torch.zeros(
+            (b, out_h, out_w, c), dtype=image.dtype, device=image.device
+        )
+        weight = torch.zeros(
+            (b, out_h, out_w, c), dtype=image.dtype, device=image.device
+        )
+
+        step = max(tile_size - overlap, 1)
+
+        y_starts = list(range(0, h, step))
+        x_starts = list(range(0, w, step))
+
+        total = len(y_starts) * len(x_starts)
+        current = 0
+
+        for y in y_starts:
+            for x in x_starts:
+                current += 1
+                y_end = min(y + tile_size, h)
+                x_end = min(x + tile_size, w)
+                y0 = max(y_end - tile_size, 0)
+                x0 = max(x_end - tile_size, 0)
+
+                tile = image[:, y0:y_end, x0:x_end, :]
+
+                print(
+                    f"\r{MSG_PREFIX}Tile {current}/{total} | "
+                    f"[{x0}:{x_end}, {y0}:{y_end}]",
+                    end="",
+                    flush=True,
+                )
+
+                upscaled_tile = self.upscaler.upscale(model, tile)[0]
+
+                oy0, oy1 = y0 * scale, y_end * scale
+                ox0, ox1 = x0 * scale, x_end * scale
+
+                output[:, oy0:oy1, ox0:ox1, :] += upscaled_tile
+                weight[:, oy0:oy1, ox0:ox1, :] += 1.0
+
+        print()
+        output = output / weight.clamp(min=1e-6)
+        return output.clamp(0.0, 1.0)
+
+    def _detect_model_scale(self, model, image):
+        small = image[:1, :16, :16, :]
+        with torch.no_grad():
+            out = self.upscaler.upscale(model, small)[0]
+        return out.shape[1] // 16

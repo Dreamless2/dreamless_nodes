@@ -179,3 +179,18 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Block the exact .env file
+.env
+
+# Block any local overrides
+.env.local
+*.env.local
+
+# Block environment files specific to different modes (e.g., development, production)
+.env.development
+.env.production
+.env.test
+
+# Block all environment files anywhere in the project
+**/*.env
