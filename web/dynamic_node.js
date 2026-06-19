@@ -408,3 +408,54 @@ app.registerExtension({
         };
     },
 });
+
+const LORA_STACK_NODE_NAME = "Dreamless_LORA_Stack_Downloader";
+const MAX_LORAS = 20;
+
+const STATIC_DEFAULTS = {
+    civitai_api_key: "",
+    hf_api_key: "",
+};
+
+const DYNAMIC_PREFIX_DEFAULTS = {
+    lora_air_: "{model_id}@{version_id}",
+};
+
+app.registerExtension({
+    name: "Dreamless.LoraStack.RestoreDefaults",
+
+    nodeCreated(node) {
+        if (node.comfyClass !== LORA_STACK_NODE_NAME) return;
+
+        for (const widget of node.widgets ?? []) {
+            // Static fields
+            if (widget.name in STATIC_DEFAULTS) {
+                const defaultValue = STATIC_DEFAULTS[widget.name];
+                const originalCallback = widget.callback;
+
+                widget.callback = function (value) {
+                    if (value === null || value === undefined || String(value).trim() === "") {
+                        widget.value = defaultValue;
+                    }
+                    if (originalCallback) originalCallback.call(this, widget.value);
+                };
+                continue;
+            }
+
+            // Dynamic lora_air_N fields
+            for (const [prefix, defaultValue] of Object.entries(DYNAMIC_PREFIX_DEFAULTS)) {
+                if (widget.name.startsWith(prefix)) {
+                    const originalCallback = widget.callback;
+
+                    widget.callback = function (value) {
+                        if (value === null || value === undefined || String(value).trim() === "") {
+                            widget.value = defaultValue;
+                        }
+                        if (originalCallback) originalCallback.call(this, widget.value);
+                    };
+                    break;
+                }
+            }
+        }
+    },
+});
