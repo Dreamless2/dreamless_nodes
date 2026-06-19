@@ -19,7 +19,7 @@ MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 MAX_LORAS = 20
 
 
-class Dreamless_LORA_Stack:
+class Dreamless_LORA_Stack_Downloader:
     @classmethod
     def INPUT_TYPES(cls):
         loras = ["none"] + folder_paths.get_filename_list("loras")
