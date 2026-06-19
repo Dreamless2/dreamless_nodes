@@ -142,7 +142,7 @@ app.registerExtension({
             "Dreamless_Loader": [420, 620],
             "Dreamless_Loader_CivitAI": [450, 800],
             "Dreamless_LORA_Stack": [380, 200],
-            "Dreamless_LORA_Stac"
+            "Dreamless_LORA_Stack_Downloader"
             "Dreamless_Multiple_LORA_Loader": [380, 200],
             "Dreamless_Checkpoint_Loader": [300, 360],
             "Dreamless_LORA_Loader": [300, 360],
