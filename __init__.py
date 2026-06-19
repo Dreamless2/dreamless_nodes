@@ -122,7 +122,7 @@ try:
         "Dreamless_VAE_Encode": Dreamless_VAE_Encode,
         "Dreamless_VAE_Tiled": Dreamless_VAE_Tiled,
         "Dreamless_Context": Dreamless_Context,
-        "Dreamless_LORA_Stack_CivitAI": Dreamless_LORA_Stack_CiI,
+        "Dreamless_LORA_Stack_CivitAI": Dreamless_LORA_Stack_CivitAI,
         "Dreamless_Diffusion_Model_Loader": Dreamless_Diffusion_Model_Loader,
         "Dreamless_Diffusion_Model_Loader_CivitAI": Dreamless_Diffusion_Model_Loader_CivitAI,
         "Dreamless_Diffusion_Model_DualCLIP_Loader": Dreamless_Diffusion_Model_DualCLIP_Loader,
