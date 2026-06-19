@@ -43,7 +43,7 @@ try:
 
     # stacks
     from .stacks.dreamless_lora_stack import Dreamless_LORA_Stack
-    from .stacks.dreamless_lora_stack_downloader import Dreamless_LORA_Stack_CivitAI
+    from .stacks.dreamless_lora_stack_downloader import Dreamless_LORA_Stack_Downloader
 
     # nodes
     from .nodes.dreamless_seed import Dreamless_Seed
