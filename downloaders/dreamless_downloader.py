@@ -220,7 +220,9 @@ class Dreamless_Downloader:
 
         print()
         print(f"[Dreamless] Model {self.name} downloaded successfully to {filepath}")
+        
         return filepath
+        
         if not self.download_url or self.name is None:
             self.details()
 
