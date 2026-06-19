@@ -172,7 +172,7 @@ try:
         "Dreamless_VAE_Encode": "DreamVAEEncode",
         "Dreamless_VAE_Tiled": "DreamSmartVAETiled",
         "Dreamless_Context": "DreamContext",
-        "Dreamless_LORA_Stack_Downloader": "DreamLoraStack (CivitAI Downloader)",
+        "Dreamless_LORA_Stack_Downloader": "DreamLoraStack (CivitAI/HF Downloader)",
         "Dreamless_Diffusion_Model_Loader": "DreamDiffusionModelLoader",
         "Dreamless_Diffusion_Model_Loader_CivitAI": "DreamDiffusionModelLoader (CivitAI Downloader)",
         "Dreamless_Diffusion_Model_DualCLIP_Loader": "DreamDiffusionModelLoader (Dual CLIP)",
