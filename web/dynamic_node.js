@@ -19,7 +19,7 @@ function registerDynamicLoras(nodeName) {
             const onNodeCreated = nodeType.prototype.onNodeCreated;
             nodeType.prototype.onNodeCreated = function () {
                 const r = onNodeCreated ? onNodeCreated.apply(this, arguments) : undefined;
-                
+
                 setTimeout(() => {
                     const countWidget = this.widgets?.find((w) => w.name === "lora_count");
                     if (!countWidget) return;
@@ -157,9 +157,9 @@ app.registerExtension({
             "Dreamless_VAE_Nodes": [280, 120],
             "Dreamless_Save_Image_Preview": [370, 540],
             "Dreamless_Load_Image": [300, 460],
-            "Dreamless_KSampler_Simple" :[290, 330],
-            "Dreamless_KSampler_Full" :[290, 390],
-            "Dreamless_KSampler_Hires" :[340, 560],          
+            "Dreamless_KSampler_Simple": [290, 330],
+            "Dreamless_KSampler_Full": [290, 390],
+            "Dreamless_KSampler_Hires": [340, 560],
             "Dreamless_KSampler_Config": [310, 302],
             "Dreamless_KSampler_Config_Advanced": [300, 210],
             "Dreamless_KSampler_Advanced": [260, 160],
