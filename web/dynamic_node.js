@@ -65,7 +65,7 @@ function registerDynamicLoras(nodeName) {
 
 registerDynamicLoras("Dreamless_Multiple_LORA_Loader");
 registerDynamicLoras("Dreamless_LORA_Stack");
-registerDynamicLoras("Dreamless_LORA_Stack_Downloader";
+registerDynamicLoras("Dreamless_LORA_Stack_Downloader");
 
 app.registerExtension({
     name: "Dreamless.ImageLoaderDynamic",
