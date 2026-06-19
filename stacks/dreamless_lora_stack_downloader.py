@@ -26,7 +26,9 @@ class Dreamless_LORA_Stack_Downloader:
 
         saved_civitai = get_api_key("civitai")
         display_civitai = (
-            f"{saved_civitai[:6]}...{saved_civitai[-4:]}" if len(saved_civitai) > 10 else saved_civitai
+            f"{saved_civitai[:6]}...{saved_civitai[-4:]}"
+            if len(saved_civitai) > 10
+            else saved_civitai
         )
 
         saved_hf = get_api_key("huggingface")
@@ -113,7 +115,11 @@ class Dreamless_LORA_Stack_Downloader:
             strength_model = float(kwargs.get(f"strength_model_{i}", 1.0))
             strength_clip = float(kwargs.get(f"strength_clip_{i}", 1.0))
 
-            if lora_name == "none" and lora_air and lora_air.strip().lower() not in ("none", "{model_id}@{version_id}"):
+            if (
+                lora_name == "none"
+                and lora_air
+                and lora_air.strip().lower() not in ("none", "{model_id}@{version_id}")
+            ):
                 if is_hf(lora_air):
                     repo_id, filename, revision = parse_hf(lora_air)
                     if repo_id and filename:
@@ -128,7 +134,9 @@ class Dreamless_LORA_Stack_Downloader:
                             filepath = downloader.download()
                             if filepath:
                                 lora_name = os.path.basename(filepath)
-                                print(f"\33[1m\33[33m[Dreamless] Using downloaded HF LoRA:\33[0m {lora_name}")
+                                print(
+                                    f"\33[1m\33[33m[Dreamless] Using downloaded HF LoRA:\33[0m {lora_name}"
+                                )
                         except Exception as e:
                             print(f"{MSG_PREFIX}Failed to download LoRA from HF: {e}")
                             continue
@@ -146,9 +154,13 @@ class Dreamless_LORA_Stack_Downloader:
                             filepath = downloader.download()
                             if filepath:
                                 lora_name = os.path.basename(filepath)
-                                print(f"\33[1m\33[33m[Dreamless] Using downloaded CivitAI LoRA:\33[0m {lora_name}")
+                                print(
+                                    f"\33[1m\33[33m[Dreamless] Using downloaded CivitAI LoRA:\33[0m {lora_name}"
+                                )
                         except Exception as e:
-                            print(f"{MSG_PREFIX}Failed to download LoRA from CivitAI: {e}")
+                            print(
+                                f"{MSG_PREFIX}Failed to download LoRA from CivitAI: {e}"
+                            )
                             continue
 
             if lora_name == "none":
@@ -159,6 +171,8 @@ class Dreamless_LORA_Stack_Downloader:
                 continue
 
             result_stack.append((lora_name, strength_model, strength_clip))
-            print(f"\33[1m\33[36m[Dreamless] Load LoRA:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}")
+            print(
+                f"\33[1m\33[36m[Dreamless] Load LoRA:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}"
+            )
 
         return (result_stack,)
