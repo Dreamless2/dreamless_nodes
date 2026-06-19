@@ -232,7 +232,6 @@ class Dreamless_Downloader:
         assert self.name, "File name is missing"
         filepath = os.path.join(save_path, str(self.name))
 
-        # 1. Verifica se o arquivo já existe
         if os.path.exists(filepath):
             local_size = os.path.getsize(filepath)
             if self.remote_size > 0 and local_size >= self.remote_size * 0.99:
