@@ -37,5 +37,5 @@ class Dreamless_Checkpoint_Loader:
         if not self.ckpt_loader:
             self.ckpt_loader = CheckpointLoaderSimple()
 
-        print(f"{MSG_PREFIX}Loading checkpoint from disk: {ckpt_name}")
+        print(f"\33[1m\33[36m[Dreamless] Load checkpoint \33[0m -> {ckpt_name}")
         return self.ckpt_loader.load_checkpoint(ckpt_name=ckpt_name)
