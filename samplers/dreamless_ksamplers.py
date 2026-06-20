@@ -135,7 +135,6 @@ class Dreamless_KSampler_Advanced:
     def sample(
         self, model, clip, vae, positive, negative, latent_image, sampler_config
     ):
-        # Puxa tudo de dentro do dicionário central, incluindo a seed!
         seed = sampler_config.get("seed", 0)
         steps = sampler_config.get("steps", 20)
         cfg = sampler_config.get("cfg", 7.0)
