@@ -172,7 +172,7 @@ class Dreamless_LORA_Stack_Downloader:
 
             result_stack.append((lora_name, strength_model, strength_clip))
             print(
-                print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m {lora_name}-> model: {strength_model} | clip: {strength_clip}")
+                print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m{lora_name}: Model {strength_model} | Clip {strength_clip}")
             )
 
         return (result_stack,)

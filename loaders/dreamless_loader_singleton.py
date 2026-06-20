@@ -349,18 +349,18 @@ class Dreamless_Loader_Singleton:
         if optional_lora_stack:
             for entry in optional_lora_stack:
                 if isinstance(entry, (tuple, list)):
-                    lora_filename, strength_model, strength_clip = entry
+                    lora_name, strength_model, strength_clip = entry
                 else:
-                    lora_filename = entry.get("name") or entry.get("lora_name")
+                    lora_name = entry.get("name") or entry.get("lora_name")
                     strength_model = entry.get("strength_model", 1.0)
                     strength_clip = entry.get("strength_clip", 1.0)
 
-                if lora_filename and lora_filename != "none":
-                    print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m {lora_filename}-> model: {strength_model} | clip: {strength_clip}")
+                if lora_name and lora_name != "none":
+                    print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m{lora_name}: Model {strength_model} | Clip {strength_clip}")
                     model, clip = self.lora_loader.load_lora(
                         model=model,
                         clip=clip,
-                        lora_name=lora_filename,
+                        lora_name=lora_name,
                         strength_model=strength_model,
                         strength_clip=strength_clip,
                     )

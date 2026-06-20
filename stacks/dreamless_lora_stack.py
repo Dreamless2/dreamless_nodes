@@ -46,10 +46,10 @@ class Dreamless_LORA_Stack:
     def stack_loras(
         self, lora_count=1, lora_stack=None, enable_lora_injection=True, **kwargs
     ):
-        print(f"{MSG_PREFIX}Starting Dreamless LoRA Stack...")
+        print(f"{MSG_PREFIX}Loading LoRAs...")
 
         if not enable_lora_injection:
-            print(f"{MSG_PREFIX}LoRA stack bypassed.")
+            print(f"{MSG_PREFIX}LoRA stack disabled.")
             return ([],)
 
         result_stack = []
@@ -70,6 +70,6 @@ class Dreamless_LORA_Stack:
                 continue
 
             result_stack.append((lora_name, strength_model, strength_clip))
-            print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m {lora_name}-> model: {strength_model} | clip: {strength_clip}")
+            print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m{lora_name}: Model {strength_model} | Clip {strength_clip}")
 
         return (result_stack,)

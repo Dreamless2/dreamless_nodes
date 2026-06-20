@@ -291,20 +291,20 @@ class Dreamless_Diffusion_Model_DualCLIP_Loader_CivitAI:
                 self.lora_loader = LoraLoader()
             for entry in optional_lora_stack:
                 if isinstance(entry, (tuple, list)):
-                    lora_filename, strength_model, strength_clip = entry
+                    lora_name, strength_model, strength_clip = entry
                 else:
-                    lora_filename = entry.get("name") or entry.get("lora_name")
+                    lora_name = entry.get("name") or entry.get("lora_name")
                     strength_model = entry.get("strength_model", 1.0)
                     strength_clip = entry.get("strength_clip", 1.0)
 
-                if lora_filename and lora_filename != "none":
+                if lora_name and lora_name != "none":
                     print(
-                        f"{MSG_PREFIX}Loading LoRA from stack: {lora_filename} (M:{strength_model}, C:{strength_clip})"
+                        f"{MSG_PREFIX}Loading LoRA from stack: {lora_name} (M:{strength_model}, C:{strength_clip})"
                     )
                     model, clip = self.lora_loader.load_lora(
                         model=model,
                         clip=clip,
-                        lora_name=lora_filename,
+                        lora_name=lora_name,
                         strength_model=strength_model,
                         strength_clip=strength_clip,
                     )
