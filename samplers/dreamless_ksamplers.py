@@ -143,7 +143,7 @@ class Dreamless_KSampler_Advanced:
         denoise = sampler_config.get("denoise", 1.0)
 
         print(
-            f"{MSG_PREFIX}Sampling Advanced -> Seed: {seed} | Steps: {steps} | CFG: {cfg} | Sampler: {sampler_name}"
+            f"{MSG_PREFIX}Sampling Advanced -> Seed: {seed} | Steps: {steps} | CFG: {cfg} | Sampler: {sampler_name} | Scheduler: {}"
         )
 
         if not self.ksampler:
