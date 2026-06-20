@@ -7,7 +7,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 
 
-class _MultiProgressRenderer:    
+class _MultiProgressRenderer:
     def __init__(self, slots: list):
         self._lock = threading.Lock()
         self._slots = list(slots)
@@ -28,10 +28,10 @@ class _MultiProgressRenderer:
             n = len(self._slots)
             lines_up = n - slot_idx
 
-            sys.stdout.write(f"\033[{lines_up}A")  
-            sys.stdout.write("\r\033[K")           
+            sys.stdout.write(f"\033[{lines_up}A")
+            sys.stdout.write("\r\033[K")
             sys.stdout.write(text)
-            sys.stdout.write(f"\033[{lines_up}B")  
+            sys.stdout.write(f"\033[{lines_up}B")
             sys.stdout.flush()
             self._lines[slot_idx] = text
 
@@ -173,7 +173,9 @@ class Dreamless_Downloader_Many:
         }
 
         try:
-            req = urllib.request.Request(url_para_resolver, headers=base_headers, method="HEAD")
+            req = urllib.request.Request(
+                url_para_resolver, headers=base_headers, method="HEAD"
+            )
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 url_final = resp.geturl()
                 total_size = int(resp.headers.get("Content-Length", self.remote_size))
@@ -280,7 +282,9 @@ class Dreamless_Downloader_Many:
                 path = dl.download(renderer=renderer, slot_idx=idx)
                 return dl.model_id, path
             except Exception as e:
-                renderer.finish(idx, f"\33[1m\33[31m[Dreamless] ✗ {dl.name}\33[0m — {e}")
+                renderer.finish(
+                    idx, f"\33[1m\33[31m[Dreamless] ✗ {dl.name}\33[0m — {e}"
+                )
                 return dl.model_id, e
 
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
