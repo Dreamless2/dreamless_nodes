@@ -310,7 +310,7 @@ class Dreamless_Loader_Singleton:
                     if air not in extra_pnginfo["workflow"]["extra"]["ckpt_airs"]:
                         extra_pnginfo["workflow"]["extra"]["ckpt_airs"].append(air)
             else:
-                print(f"\33[1m\33[36m[Dreamless] Load checkpoint \33[0m {lora_name}-> model: {strength_model} | clip: {strength_clip}") {ckpt_name}")
+                print(f"\33[1m\33[36m[Dreamless] Load checkpoint \33[0m -> model: {strength_model} | clip: {strength_clip}") {ckpt_name}")
                 
             model, clip, vae = self.ckpt_loader.load_checkpoint(ckpt_name=ckpt_name)
 
