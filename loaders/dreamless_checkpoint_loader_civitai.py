@@ -89,7 +89,7 @@ class Dreamless_Checkpoint_Loader_CivitAI:
                 raise RuntimeError(f"{MSG_PREFIX}Failed to download checkpoint.")
             ckpt_name = downloader.name
         else:
-            print(f"{MSG_PREFIX}Loading checkpoint from disk: {ckpt_name}")
+            print(f"\33[1m\33[36m[Dreamless] Load checkpoint \33[0m -> {ckpt_name}")
 
         if not self.ckpt_loader:
             self.ckpt_loader = CheckpointLoaderSimple()
