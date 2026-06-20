@@ -240,7 +240,6 @@ class Dreamless_Downloader_Many:
 
             while not all(f.done() for f in futures):
                 downloaded = sum(progress)
-                # usa total_size do Content-Length real — evita parar em 99%
                 percent = min(int(downloaded * 100 / total_size), 100)
 
                 if percent != last_percent:
