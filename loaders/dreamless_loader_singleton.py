@@ -356,7 +356,7 @@ class Dreamless_Loader_Singleton:
                     strength_clip = entry.get("strength_clip", 1.0)
 
                 if lora_filename and lora_filename != "none":
-                    print(f"\33[1m\33[36m[Dreamless] Load LoRA -> \33[0m {lora_filename}: model={strength_model} | clip={strength_clip}")
+                    print(f"\33[1m\33[36m[Dreamless] Load LoRA -> \33[0m {lora_filename}: model={strength_model} | CLIP={strength_clip}")
                     model, clip = self.lora_loader.load_lora(
                         model=model,
                         clip=clip,
