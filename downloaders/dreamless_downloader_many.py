@@ -188,7 +188,6 @@ class Dreamless_Downloader_Many:
 
         total_text = self.format_size(total_size)
 
-        # ── Pré-aloca o arquivo ───────────────────────────────────────────────
         with open(filepath, "wb") as f:
             f.truncate(total_size)
 
