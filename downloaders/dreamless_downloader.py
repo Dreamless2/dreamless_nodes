@@ -221,6 +221,5 @@ class Dreamless_Downloader:
         print()
         print(f"[Dreamless] Model {self.name} downloaded successfully to {filepath}")
         
-        return filepath
-        
+        return filepath    
     
