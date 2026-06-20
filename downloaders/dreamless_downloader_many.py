@@ -230,7 +230,6 @@ class Dreamless_Downloader_Many:
                         out_file.write(chunk)
                         progress[part_id] += len(chunk)
 
-        # ── Loop de progresso ─────────────────────────────────────────────────
         last_percent = -1
         with ThreadPoolExecutor(max_workers=num_threads) as executor:
             futures = [
