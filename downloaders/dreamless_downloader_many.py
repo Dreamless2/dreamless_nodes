@@ -266,14 +266,6 @@ class Dreamless_Downloader_Many:
 
     @staticmethod
     def download_many(downloaders, max_workers=2, stagger_seconds=3):
-        """
-        Baixa múltiplos modelos em paralelo com barras de progresso individuais.
-
-        downloaders:     lista de instâncias Dreamless_Downloader já configuradas
-        max_workers:     downloads simultâneos (cada um usa 8 threads internamente)
-        stagger_seconds: delay entre inícios para não estressar a API
-        """
-        # Busca metadados de todos antes de reservar as linhas do terminal
         for dl in downloaders:
             if dl.name is None:
                 dl.details()
