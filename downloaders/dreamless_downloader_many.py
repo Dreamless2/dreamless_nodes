@@ -199,7 +199,6 @@ class Dreamless_Downloader_Many:
         with open(filepath, "wb") as f:
             f.truncate(total_size)
 
-        # ── Divide em partes ──────────────────────────────────────────────────
         num_threads = 8
         part_size = total_size // num_threads
         ranges = [
