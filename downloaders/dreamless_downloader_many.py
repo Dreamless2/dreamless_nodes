@@ -162,7 +162,6 @@ class Dreamless_Downloader_Many:
                     print(msg)
                 return filepath
 
-        # ── Resolve URL final e tamanho real via Content-Length ───────────────
         url_para_resolver = self.download_url
         if self.token:
             sep = "&" if "?" in url_para_resolver else "?"
