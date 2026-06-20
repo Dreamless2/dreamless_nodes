@@ -212,7 +212,7 @@ class Dreamless_Downloader:
                     bar = "█" * filled_length + "░" * (bar_length - filled_length)
 
                     print(
-                        f"\r[Dreamless] [{bar}] {percent}% | Downloaded {downloaded_text} of {total_text} | Speed: {speed_text} | ETA: {self.format_time(eta)}          ",
+                        f"\r[Dreamless] [{bar}] {percent:3d}% | Downloaded {downloaded_text} of {total_text} | Speed: {speed_text} | ETA: {self.format_time(eta)}          ",
                         end="",
                         flush=True,
                     )
