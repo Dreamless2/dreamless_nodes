@@ -136,8 +136,8 @@ class Dreamless_KSampler_Advanced:
         self, model, clip, vae, positive, negative, latent_image, sampler_config
     ):
         seed = sampler_config.get("seed", 0)
-        steps = sampler_config.get("steps", 20)
-        cfg = sampler_config.get("cfg", 7.0)
+        steps = sampler_config.get("steps", 4)
+        cfg = sampler_config.get("cfg", 2.0)
         sampler_name = sampler_config.get("sampler_name", "lcm")
         scheduler = sampler_config.get("scheduler", "normal")
         denoise = sampler_config.get("denoise", 1.0)
