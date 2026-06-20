@@ -28,10 +28,11 @@ class _MultiProgressRenderer:
             n = len(self._slots)
             lines_up = n - slot_idx
 
-            sys.stdout.write(f"\033[{lines_up}A")  # sobe até a linha do slot
+            sys.stdout.write(f"\033[{lines_up}A")  
             sys.stdout.write("\r\033[K")           
             sys.stdout.write(text)
-            sys.stdout.write(f"\033[{lines_up}B")              sys.stdout.flush()
+            sys.stdout.write(f"\033[{lines_up}B")  
+            sys.stdout.flush()
             self._lines[slot_idx] = text
 
     def finish(self, slot_idx: int, text: str):
