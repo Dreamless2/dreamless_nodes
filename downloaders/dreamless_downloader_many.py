@@ -7,13 +7,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 
 
-class _MultiProgressRenderer:
-    """
-    Renderiza N barras de progresso independentes no terminal usando
-    cursor ANSI. Cada slot tem sua própria linha e é atualizado
-    individualmente sem sobrescrever as outras.
-    """
-
+class _MultiProgressRenderer:    
     def __init__(self, slots: list):
         self._lock = threading.Lock()
         self._slots = list(slots)
