@@ -255,7 +255,6 @@ class Dreamless_Downloader_Many:
 
                 time.sleep(0.2)
 
-        # ── Finaliza ──────────────────────────────────────────────────────────
         done_line = f"\33[1m\33[32m[Dreamless] ✓ {label}\33[0m downloaded to {filepath}"
         if renderer:
             renderer.finish(slot_idx, done_line)
