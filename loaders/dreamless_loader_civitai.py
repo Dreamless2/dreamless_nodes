@@ -260,7 +260,7 @@ class Dreamless_Loader_CivitAI:
                     strength_clip = entry.get("strength_clip", 1.0)
 
                 if lora_name and lora_name != "none":
-                    print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m{lora_name}: Model {strength_model} | Clip {strength_clip}")
+                    print(f"\33[1m\33[36m[Dreamless] Load LoRA: \33[0m{lora_name}: model: {strength_model}, clip:{strength_clip}")
                     model, clip = self.lora_loader.load_lora(
                         model=model,
                         clip=clip,
