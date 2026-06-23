@@ -162,7 +162,7 @@ class Dreamless_KSampler_Advanced:
             denoise=denoise,
         )[0]
 
-        print(f"{MSG_PREFIX}VAE Decoding to Image...")
+      
         if not self.vae_decode:
             self.vae_decode = VAEDecode()
 
