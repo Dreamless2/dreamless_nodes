@@ -161,8 +161,7 @@ class Dreamless_KSampler_Advanced:
             latent_image=latent_image,
             denoise=denoise,
         )[0]
-
-      
+              
         if not self.vae_decode:
             self.vae_decode = VAEDecode()
 
