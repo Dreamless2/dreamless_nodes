@@ -3,21 +3,6 @@ import torch.nn.functional as F
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
-antialias_modes = {"bilinear", "bicubic", "lanczos"}
-use_antialias = upscale_method in antialias_modes
-
-align_corners_modes = {"bilinear", "bicubic"}
-use_align_corners = False if upscale_method in align_corners_modes else None
-
-samples = F.interpolate(
-    samples,
-    size=(target_height, target_width),
-    mode=upscale_method,
-    align_corners=use_align_corners,
-    antialias=use_antialias,
-)
-
-
 class Dreamless_Upscale_Image_By:    
     @classmethod
     def INPUT_TYPES(cls):
