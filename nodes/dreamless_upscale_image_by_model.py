@@ -81,14 +81,6 @@ class Dreamless_Upscale_Image_By_Model:
         samples = model_upscaled.permute(0, 3, 1, 2)
 
         print(f"{MSG_PREFIX}Resizing to final factor via {upscale_method}...")
-        samples = F.interpolate(
-            samples,
-            size=(target_height, target_width),
-            mode=upscale_method,
-            align_corners=(
-                False if upscale_method not in ("nearest_exact", "area") else None
-            ),
-        )
         
         antialias_modes = {"bilinear", "bicubic", "lanczos"}
         use_antialias = upscale_method in antialias_modes
