@@ -98,7 +98,7 @@ class Dreamless_Upscale_Image_Model:
         print(
             f"{MSG_PREFIX}Resizing to final dimensions: {width}x{height} via {upscale_method}..."
         )
-        
+
         antialias_modes = {"bilinear", "bicubic", "lanczos"}
         use_antialias = upscale_method in antialias_modes
 
