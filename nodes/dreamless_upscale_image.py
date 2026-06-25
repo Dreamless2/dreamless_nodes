@@ -4,9 +4,7 @@ import torch.nn.functional as F
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
 
-class Dreamless_Upscale_Image:
-    DESCRIPTION = "Resize an image mathematically to a specific width and height without using external models."
-
+class Dreamless_Upscale_Image:    
     @classmethod
     def INPUT_TYPES(cls):
         return {
