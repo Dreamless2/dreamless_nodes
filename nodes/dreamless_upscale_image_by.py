@@ -3,7 +3,8 @@ import torch.nn.functional as F
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
-class Dreamless_Upscale_Image_By:    
+
+class Dreamless_Upscale_Image_By:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -28,7 +29,7 @@ class Dreamless_Upscale_Image_By:
     def upscale_by(self, image, upscale_method, scale_by):
         target_height = int(image.shape[1] * scale_by)
         target_width = int(image.shape[2] * scale_by)
-        
+
         antialias_modes = {"bilinear", "bicubic", "lanczos"}
         use_antialias = upscale_method in antialias_modes
 
