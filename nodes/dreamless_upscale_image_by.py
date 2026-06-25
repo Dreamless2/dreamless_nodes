@@ -53,4 +53,4 @@ class Dreamless_Upscale_Image_By:
         output_image = samples.permute(0, 2, 3, 1)
         output_image = torch.clamp(output_image, 0.0, 1.0)
 
-        return (output_image,)
+        return (output_image,) 
