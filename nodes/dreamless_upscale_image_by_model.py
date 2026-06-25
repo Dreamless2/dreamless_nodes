@@ -109,10 +109,6 @@ class Dreamless_Upscale_Image_By_Model:
 
         return (output_image,)
 
-        output_image = samples.permute(0, 2, 3, 1)
-        output_image = torch.clamp(output_image, 0.0, 1.0)
-
-        return (output_image,)
 
     def _upscale_tiled(self, model, image, tile_size, overlap):
         b, h, w, c = image.shape
