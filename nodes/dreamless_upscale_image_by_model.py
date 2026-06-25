@@ -81,7 +81,7 @@ class Dreamless_Upscale_Image_By_Model:
         samples = model_upscaled.permute(0, 3, 1, 2)
 
         print(f"{MSG_PREFIX}Resizing to final factor via {upscale_method}...")
-        
+
         antialias_modes = {"bilinear", "bicubic", "lanczos"}
         use_antialias = upscale_method in antialias_modes
 
@@ -100,7 +100,6 @@ class Dreamless_Upscale_Image_By_Model:
         output_image = torch.clamp(output_image, 0.0, 1.0)
 
         return (output_image,)
-
 
     def _upscale_tiled(self, model, image, tile_size, overlap):
         b, h, w, c = image.shape
