@@ -43,6 +43,20 @@ class Dreamless_Upscale_Image_By:
     def upscale_by(self, image, upscale_method, scale_by):
         target_height = int(image.shape[1] * scale_by)
         target_width = int(image.shape[2] * scale_by)
+        
+        antialias_modes = {"bilinear", "bicubic", "lanczos"}
+        use_antialias = upscale_method in antialias_modes
+
+        align_corners_modes = {"bilinear", "bicubic"}
+        use_align_corners = False if upscale_method in align_corners_modes else None
+
+        samples = F.interpolate(
+            samples,
+            size=(target_height, target_width),
+            mode=upscale_method,
+            align_corners=use_align_corners,
+            antialias=use_antialias,
+        )
 
         print(
             f"{MSG_PREFIX}Scaling image by {scale_by}x to target size: {target_width}x{target_height}..."
