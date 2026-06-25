@@ -8,11 +8,6 @@ MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
 
 class Dreamless_Upscale_Image_By_Model:
-    DESCRIPTION = (
-        "Upscale an image by a scale factor using an upscale model and resize methods. "
-        "Set tile_size > 0 to process in tiles (recommended for low VRAM)."
-    )
-
     def __init__(self):
         self.model_loader = UpscaleModelLoader()
         self.upscaler = ImageUpscaleWithModel()
