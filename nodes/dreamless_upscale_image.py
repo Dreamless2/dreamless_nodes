@@ -47,18 +47,11 @@ class Dreamless_Upscale_Image:
             f"{MSG_PREFIX}Resizing image mathematically to {width}x{height} via {upscale_method}..."
         )
 
-        antialias_modes = {"bilinear", "bicubic", "lanczos"}
-        use_antialias = upscale_method in antialias_modes
-
-        align_corners_modes = {"bilinear", "bicubic"}
-        use_align_corners = False if upscale_method in align_corners_modes else None
-
         samples = F.interpolate(
             samples,
-            size=(target_height, target_width),
+            size=(height, width),
             mode=upscale_method,
-            align_corners=use_align_corners,
-            antialias=use_antialias,
+            align_corners=False if upscale_method != "nearest-exact" else None,
         )
 
         output_image = samples.permute(0, 2, 3, 1)
