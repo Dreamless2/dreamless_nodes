@@ -55,7 +55,7 @@ class Dreamless_Upscale_Image:
 
         samples = F.interpolate(
             samples,
-            size=(target_height, target_width),
+            size=(height, width),
             mode=upscale_method,
             align_corners=use_align_corners,
             antialias=use_antialias,
