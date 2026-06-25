@@ -30,6 +30,12 @@ class Dreamless_Upscale_Image_By:
         target_height = int(image.shape[1] * scale_by)
         target_width = int(image.shape[2] * scale_by)
 
+        print(
+            f"{MSG_PREFIX}Scaling image by {scale_by}x to target size: {target_width}x{target_height}..."
+        )
+
+        samples = image.permute(0, 3, 1, 2)
+
         antialias_modes = {"bilinear", "bicubic", "lanczos"}
         use_antialias = upscale_method in antialias_modes
 
@@ -44,20 +50,6 @@ class Dreamless_Upscale_Image_By:
             antialias=use_antialias,
         )
 
-        print(
-            f"{MSG_PREFIX}Scaling image by {scale_by}x to target size: {target_width}x{target_height}..."
-        )
-
-        samples = image.permute(0, 3, 1, 2)
-
-        samples = F.interpolate(
-            samples,
-            size=(target_height, target_width),
-            mode=upscale_method,
-            align_corners=False if upscale_method != "nearest-exact" else None,
-        )
-
-        # Retorna para o formato do ComfyUI [B, H, W, C]
         output_image = samples.permute(0, 2, 3, 1)
         output_image = torch.clamp(output_image, 0.0, 1.0)
 
