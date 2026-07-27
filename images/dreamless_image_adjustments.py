@@ -56,9 +56,6 @@ class Dreamless_Image_Adjustments:
             grayscale = grayscale.unsqueeze(-1)
             output_image = torch.lerp(grayscale, output_image, saturation)
 
-        # =====================================================
-        # 4. SHARPNESS (Sharpen / Blur)
-        # =====================================================
         if sharpness != 0.0:
             samples = output_image.permute(0, 3, 1, 2)
 
