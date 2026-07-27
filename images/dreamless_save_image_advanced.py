@@ -150,8 +150,7 @@ class Dreamless_Save_Image_Advanced:
                 rel_subfolder = os.path.relpath(full_output_dir, self.output_dir)
                 if rel_subfolder.startswith(".."):
                     rel_subfolder = parsed_subdir
-            except ValueError:
-                # Drives diferentes no Windows (ex: D:\ vs C:\)
+            except ValueError:               
                 rel_subfolder = parsed_subdir
 
             results.append(
