@@ -1,26 +1,25 @@
-import folder_paths
 import os
 
+import folder_paths
 from nodes import (
     CheckpointLoaderSimple,
-    VAELoader,
-    LoraLoader,
     CLIPTextEncode,
     EmptyLatentImage,
+    LoraLoader,
+    VAELoader,
 )
 
-from ..utils.helpers import (
-    get_api_key,
-    set_api_key,
-    short_paths_map,
-    parse_air,
-    is_hf,
-    parse_hf,
-)
-
-from ..utils.config import BASE_RESOLUTIONS, MAX_RESOLUTION
 from ..downloaders.dreamless_downloader import Dreamless_Downloader
 from ..downloaders.dreamless_hf_downloader import Dreamless_HF_Downloader
+from ..utils.config import BASE_RESOLUTIONS, MAX_RESOLUTION
+from ..utils.helpers import (
+    get_api_key,
+    is_hf,
+    parse_air,
+    parse_hf,
+    set_api_key,
+    short_paths_map,
+)
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 RESOLUTION_MAP = {
@@ -311,7 +310,7 @@ class Dreamless_Loader_Singleton:
                         extra_pnginfo["workflow"]["extra"]["ckpt_airs"].append(air)
             else:
                 print(f"\33[1m\33[36m[Dreamless] Load checkpoint \33[0m-> {ckpt_name}")
-                
+
             model, clip, vae = self.ckpt_loader.load_checkpoint(ckpt_name=ckpt_name)
 
         if (
@@ -356,7 +355,9 @@ class Dreamless_Loader_Singleton:
                     strength_clip = entry.get("strength_clip", 1.0)
 
                 if lora_name and lora_name != "none":
-                    print(f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS: \33[0m{lora_name}: model: {strength_model}, clip: {strength_clip}")
+                    print(
+                        f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS: \33[0m{lora_name}: model: {strength_model}, clip: {strength_clip}"
+                    )
                     model, clip = self.lora_loader.load_lora(
                         model=model,
                         clip=clip,
