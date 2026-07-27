@@ -1,10 +1,8 @@
-
-
 import folder_paths
 from nodes import CheckpointLoaderSimple
 
-from ..utils.helpers import get_api_key, set_api_key, short_paths_map, parse_air
 from ..downloaders.dreamless_downloader import Dreamless_Downloader
+from ..utils.helpers import get_api_key, parse_air, set_api_key, short_paths_map
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
