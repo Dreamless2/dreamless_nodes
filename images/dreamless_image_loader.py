@@ -1,11 +1,12 @@
+import hashlib
 import os
+from io import BytesIO
+
+import folder_paths
+import numpy as np
 import requests
 import torch
-import numpy as np
 from PIL import Image, ImageOps
-import folder_paths
-from io import BytesIO
-import hashlib
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
