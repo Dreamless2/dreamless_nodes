@@ -43,17 +43,10 @@ class Dreamless_Image_Adjustments:
         if brightness != 1.0:
             output_image = output_image * brightness
 
-        # =====================================================
-        # 2. CONTRAST
-        # =====================================================
         if contrast != 1.0:
-            # Usa a média cinza global como ponto pivô do contraste
             mean = torch.mean(output_image, dim=(1, 2), keepdim=True)
             output_image = (output_image - mean) * contrast + mean
 
-        # =====================================================
-        # 3. SATURATION
-        # =====================================================
         if saturation != 1.0:
             grayscale = (
                 output_image[..., 0] * 0.299
