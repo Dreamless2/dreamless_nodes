@@ -1,6 +1,4 @@
-
-
-import folder_paths 
+import folder_paths
 from nodes import CheckpointLoaderSimple
 
 CHECKPOINTS = folder_paths.folder_names_and_paths["checkpoints"][0]
