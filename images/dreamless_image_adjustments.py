@@ -79,9 +79,6 @@ class Dreamless_Image_Adjustments:
 
             output_image = samples.permute(0, 2, 3, 1)
 
-        # =====================================================
-        # CRITICAL PROTECTION
-        # =====================================================
         output_image = torch.clamp(output_image, 0.0, 1.0)
 
         print(f"{MSG_PREFIX}Adjustments applied successfully.")
