@@ -124,12 +124,7 @@ class Dreamless_Save_Image_Advanced:
                     )
 
                 compress_level = max(0, min(9, int((100 - quality) / 10)))
-                img.save(save_path, pnginfo=png_metadata, compress_level=compress_level)
-
-            # -------------------------------------------------
-            # JPG / WEBP
-            # -------------------------------------------------
-
+                img.save(save_path, pnginfo=png_metadata, compress_level=compress_level)            
             else:
                 img = img.convert("RGB")
 
