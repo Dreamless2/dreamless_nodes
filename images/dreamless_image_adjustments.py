@@ -38,13 +38,8 @@ class Dreamless_Image_Adjustments:
 
     def apply_adjustments(self, image, brightness, contrast, saturation, sharpness):
         print(f"{MSG_PREFIX}Applying image adjustments...")
-
-        \# O ComfyUI trabalha com tensores no formato [B, H, W, C] clonados
         output_image = image.clone()
 
-        # =====================================================
-        # 1. BRIGHTNESS
-        # =====================================================
         if brightness != 1.0:
             output_image = output_image * brightness
 
