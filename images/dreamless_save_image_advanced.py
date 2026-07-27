@@ -1,10 +1,10 @@
+import json
 import os
 import re
-import json
 import time
+
 import folder_paths
 import numpy as np
-
 from PIL import Image, PngImagePlugin
 
 INVALID_FILENAME_CHARS = r'[<>:"/\\|?*\n\r\t]'
@@ -101,7 +101,7 @@ class Dreamless_Save_Image_Advanced:
         os.makedirs(full_output_dir, exist_ok=True)
 
         results = []
-   
+
         for batch_number, image in enumerate(images):
             image_np = image.cpu().numpy()
             image_np = np.clip(image_np * 255.0, 0, 255).astype(np.uint8)
@@ -110,7 +110,7 @@ class Dreamless_Save_Image_Advanced:
             final_filename = f"{parsed_filename}_{batch_number:03}.{output_format}"
             final_filename = self.limit_filename(final_filename)
             save_path = os.path.join(full_output_dir, final_filename)
-            
+
             if output_format == "png":
                 png_metadata = None
 
@@ -124,7 +124,7 @@ class Dreamless_Save_Image_Advanced:
                     )
 
                 compress_level = max(0, min(9, int((100 - quality) / 10)))
-                img.save(save_path, pnginfo=png_metadata, compress_level=compress_level)            
+                img.save(save_path, pnginfo=png_metadata, compress_level=compress_level)
             else:
                 img = img.convert("RGB")
 
@@ -150,7 +150,7 @@ class Dreamless_Save_Image_Advanced:
                 rel_subfolder = os.path.relpath(full_output_dir, self.output_dir)
                 if rel_subfolder.startswith(".."):
                     rel_subfolder = parsed_subdir
-            except ValueError:               
+            except ValueError:
                 rel_subfolder = parsed_subdir
 
             results.append(
@@ -161,7 +161,8 @@ class Dreamless_Save_Image_Advanced:
                 }
             )
 
-        return {"ui": {"images": results}} 
+        return {"ui": {"images": results}}
+
     def add_png_metadata(
         self,
         png_metadata,
@@ -196,7 +197,7 @@ class Dreamless_Save_Image_Advanced:
             metadata["workflow"] = extra_pnginfo
 
         return json.dumps(metadata, ensure_ascii=False)
-    
+
     def parse_masks(self, text, metadata):
         now = metadata["date"]
 
@@ -226,7 +227,7 @@ class Dreamless_Save_Image_Advanced:
             text = text.replace(token, value)
 
         return text
-    
+
     def sanitize_filename(self, text):
         text = re.sub(INVALID_FILENAME_CHARS, "_", text)
         return text.strip(" .")
