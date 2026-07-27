@@ -162,11 +162,7 @@ class Dreamless_Save_Image_Advanced:
             )
 
         return {"ui": {"images": results}}
-
-    # =========================================================
-    # METADATA
-    # =========================================================
-
+ 
     def add_png_metadata(
         self,
         png_metadata,
