@@ -105,11 +105,7 @@ class Dreamless_Save_Image_Advanced:
         os.makedirs(full_output_dir, exist_ok=True)
 
         results = []
-
-        # =====================================================
-        # SAVE
-        # =====================================================
-
+   
         for batch_number, image in enumerate(images):
             image_np = image.cpu().numpy()
             image_np = np.clip(image_np * 255.0, 0, 255).astype(np.uint8)
