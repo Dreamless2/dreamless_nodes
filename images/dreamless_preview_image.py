@@ -1,7 +1,5 @@
-
-
-from nodes import PreviewImage
 import folder_paths
+from nodes import PreviewImage
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
