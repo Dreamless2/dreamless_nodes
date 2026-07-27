@@ -68,7 +68,7 @@ class Dreamless_Save_Image_Preview:
                 {
                     "filename": file_name,
                     "subfolder": subfolder,
-                    "type": "output",  # <-- sempre output, pois sempre salva
+                    "type": "output",
                 }
             )
             counter += 1
