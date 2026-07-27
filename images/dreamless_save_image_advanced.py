@@ -196,11 +196,7 @@ class Dreamless_Save_Image_Advanced:
             metadata["workflow"] = extra_pnginfo
 
         return json.dumps(metadata, ensure_ascii=False)
-
-    # =========================================================
-    # MASKS
-    # =========================================================
-
+    
     def parse_masks(self, text, metadata):
         now = metadata["date"]
 
