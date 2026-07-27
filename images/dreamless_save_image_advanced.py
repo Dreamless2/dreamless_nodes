@@ -92,10 +92,6 @@ class Dreamless_Save_Image_Advanced:
             "date": now,
         }
 
-        # =====================================================
-        # PATHS
-        # =====================================================
-
         parsed_subdir = self.parse_masks(subdirectory_name, metadata_map)
         parsed_filename = self.parse_masks(filename_prefix, metadata_map)
         parsed_subdir = self.sanitize_filename(parsed_subdir)
