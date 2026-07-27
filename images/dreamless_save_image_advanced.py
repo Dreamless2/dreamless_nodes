@@ -118,11 +118,7 @@ class Dreamless_Save_Image_Advanced:
             final_filename = f"{parsed_filename}_{batch_number:03}.{output_format}"
             final_filename = self.limit_filename(final_filename)
             save_path = os.path.join(full_output_dir, final_filename)
-
-            # -------------------------------------------------
-            # PNG
-            # -------------------------------------------------
-
+            
             if output_format == "png":
                 png_metadata = None
 
