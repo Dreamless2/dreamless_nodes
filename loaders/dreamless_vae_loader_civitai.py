@@ -1,8 +1,10 @@
 import os
+
 import folder_paths
 from nodes import VAELoader
+
 from ..downloaders.dreamless_downloader import Dreamless_Downloader
-from ..utils.helpers import short_paths_map, model_path, parse_air, get_api_key
+from ..utils.helpers import get_api_key, model_path, parse_air, short_paths_map
 
 VAE_PATHS = folder_paths.folder_names_and_paths.get("vae", [["", ""]])[0]
 if isinstance(VAE_PATHS, str):
