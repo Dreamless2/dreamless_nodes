@@ -1,5 +1,3 @@
-
-
 import folder_paths
 from nodes import LoraLoader
 
