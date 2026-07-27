@@ -140,7 +140,7 @@ class Dreamless_Save_Image_Advanced:
                 elif output_format == "webp":
                     img.save(save_path, format="WEBP", method=6, **save_kwargs)
 
-            print(f"[Dreamless] Saved: {save_path}")
+            print(f"[Dreamless] Saved on: {save_path}")
 
             try:
                 rel_subfolder = os.path.relpath(full_output_dir, self.output_dir)
