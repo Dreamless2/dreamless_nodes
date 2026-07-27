@@ -34,8 +34,6 @@ class Dreamless_Save_Image:
     OUTPUT_NODE = True
     CATEGORY = "Dreamless/IO"
 
-    # =========================================================
-
     def save_images(
         self,
         images,
