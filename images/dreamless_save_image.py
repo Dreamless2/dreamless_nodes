@@ -1,7 +1,7 @@
-import os
 import json
-import folder_paths
+import os
 
+import folder_paths
 from PIL import Image, PngImagePlugin
 
 
