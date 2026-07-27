@@ -73,7 +73,7 @@ class Dreamless_Save_Image_Preview:
             )
             counter += 1
 
-        print(f"{MSG_PREFIX} Imagens salvas com sucesso em: {full_output_folder}")
+        print(f"{MSG_PREFIX} Saved imag: {full_output_folder}")
 
         if preview == "ON":
             return {"ui": {"images": results}}
