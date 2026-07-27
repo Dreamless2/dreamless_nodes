@@ -1,10 +1,10 @@
-import os
 import json
+import os
+
+import folder_paths
 import numpy as np
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
-
-import folder_paths
 
 MSG_PREFIX = "\33[1m\33[34m[Dreamless] \33[0m"
 
@@ -57,7 +57,7 @@ class Dreamless_Save_Image_Preview:
                 metadata.add_text("prompt", json.dumps(prompt))
             if extra_pnginfo is not None:
                 for key, value in extra_pnginfo.items():
-                    metadata.add_text(key, json.dumps(value)) 
+                    metadata.add_text(key, json.dumps(value))
 
             file_name = f"{filename}_{counter:05}_.png"
             file_path = os.path.join(full_output_folder, file_name)
