@@ -226,11 +226,7 @@ class Dreamless_Save_Image_Advanced:
             text = text.replace(token, value)
 
         return text
-
-    # =========================================================
-    # SANITIZE
-    # =========================================================
-
+    
     def sanitize_filename(self, text):
         text = re.sub(INVALID_FILENAME_CHARS, "_", text)
         return text.strip(" .")
