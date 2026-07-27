@@ -293,7 +293,7 @@ class Dreamless_Diffusion_Model_CLIP_Loader_CivitAI:
 
                 if lora_name and lora_name != "none":
                     print(
-                        f"\33[1m\33[36m[Dreamless] Load LoRA:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}"
+                        f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}"
                     )
                     model, clip = self.lora_loader.load_lora(
                         model=model,

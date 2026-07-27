@@ -64,7 +64,7 @@ class Dreamless_Multiple_LORA_Loader:
             if lora_name == "none":
                 continue
 
-            print(f"\33[1m\33[36m[Dreamless] Load LoRA:\33[0m{i + 1}/{lora_count}: {lora_name}: model={strength_model}, clip={strength_clip}")
+            print(f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS:\33[0m{i + 1}/{lora_count}: {lora_name}: model={strength_model}, clip={strength_clip}")
             
             current_model, current_clip = self.lora_loader.load_lora(
                 current_model,

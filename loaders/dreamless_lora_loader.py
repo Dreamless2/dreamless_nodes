@@ -43,7 +43,7 @@ class Dreamless_LORA_Loader:
             self.lora_loader = LoraLoader()
 
         print(
-            f"\33[1m\33[36m[Dreamless] Load LoRA:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}"
+            f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS:\33[0m {lora_name}: model={strength_model}, clip={strength_clip}"
         )
         return self.lora_loader.load_lora(
             model, clip, lora_name, strength_model, strength_clip
