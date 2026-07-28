@@ -55,9 +55,7 @@ class Dreamless_HF_Downloader:
         }
         if self.token:
             headers["Authorization"] = f"Bearer {self.token}"
-        return headers
-
-   
+        return headers   
 
     def details(self):
         """Resolve the final download URL and remote file size via HEAD request."""
@@ -70,7 +68,6 @@ class Dreamless_HF_Downloader:
                 self.remote_size = int(resp.headers.get("Content-Length", 0))
                 self.download_url = resp.geturl()  # follow redirects
         except Exception:
-            # fallback: tamanho será determinado na hora do download
             self.remote_size = 0
 
         return {
