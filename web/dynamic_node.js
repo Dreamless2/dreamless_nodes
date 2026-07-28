@@ -164,8 +164,6 @@ app.registerExtension({
             "Dreamless_KSampler_Advanced": [260, 160],
             "Dreamless_Preview_Image": [450, 500],
             "Dreamless_Load_Image": [280, 420],
-
-
         };
 
         const defaultSize = sizes[nodeData.name];
