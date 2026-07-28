@@ -20,7 +20,6 @@ def get_api_key(provider="civitai") -> str:
 
 
 def set_api_key(provider: str, key: str):
-    """Writes the API key for the specified provider to the .env file."""
     provider = provider.lower().strip()
     key_name = f"{provider.upper()}_API_KEY"
     set_key(str(ENV_PATH), key_name, key.strip())
@@ -28,7 +27,6 @@ def set_api_key(provider: str, key: str):
 
 
 def short_paths_map(paths: list[str]) -> dict:
-    """Returns a dictionary with short paths as keys and full paths as values."""
     result = {}
     for path_str in paths:
         p = Path(path_str)
