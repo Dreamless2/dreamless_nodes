@@ -1,14 +1,14 @@
 import concurrent.futures
+import hashlib
+import json
 import os
 import re
-import json
 import time
-import hashlib
-import requests
-from tqdm import tqdm
 from pathlib import Path
 
 import comfy.utils
+import requests
+from tqdm import tqdm
 
 from ..utils.helpers import get_api_key
 
@@ -151,13 +151,13 @@ class CivitAI_Downloader:
 
             if self.debug_response:
                 print(f"{MSG_PREFIX}API Response:")
-                print("")
-                print("")
+                print()
+                print()
                 from pprint import pprint
 
                 pprint(model_data, indent=4)
-                print("")
-                print("")
+                print()
+                print()
 
             model_versions = model_data.get("modelVersions")
             model_type = model_data.get("type", "Model")
@@ -302,7 +302,7 @@ class CivitAI_Downloader:
                 raise Exception(
                     f"{ERR_PREFIX}Unable to re-establish connection to CivitAI."
                 )
-        
+
         def get_total_file_size(url):
             response = requests.get(url, stream=True)
             content_length = response.headers.get("Content-Length")
@@ -321,7 +321,7 @@ class CivitAI_Downloader:
                 return self.file_size
 
             return None
- 
+
         model_name = self.model_cached_name(self.model_id, self.version)
 
         if model_name:
@@ -493,9 +493,11 @@ class CivitAI_Downloader:
                         if files:
                             for file in files:
                                 name = file.get("name")
-                                if version_id and version_id == version:
-                                    return name
-                                elif self.model_exists_disk(name):
+                                if (
+                                    version_id
+                                    and version_id == version
+                                    or self.model_exists_disk(name)
+                                ):
                                     return name
         return None
 
