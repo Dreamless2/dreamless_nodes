@@ -119,7 +119,7 @@ def parse_hf(value: str):
     """
     Extract (repo_id, filename, revision) from URL HF.
 
-    Formatos aceitos:
+    Accepted formats:
         hf:black-forest-labs/FLUX.1-dev/flux1-dev.safetensors
         hf:black-forest-labs/FLUX.1-dev/flux1-dev.safetensors@main
         black-forest-labs/FLUX.1-dev/flux1-dev.safetensors
