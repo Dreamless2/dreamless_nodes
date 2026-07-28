@@ -348,9 +348,7 @@ class CivitAI_Downloader:
         print(f"{MSG_PREFIX}Downloading `{self.name}` from `{self.download_url}`")
         save_path = os.path.join(
             self.model_path, self.name
-        )  # Assume default comfy folder, unless we take user input on extra paths
-
-        # EXISTING MODEL FOUND -- CHECK SHA256
+        ) 
 
         if os.path.exists(save_path):
             print(f"{MSG_PREFIX}{self.type} file already exists at: {save_path}")
