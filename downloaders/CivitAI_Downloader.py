@@ -420,7 +420,7 @@ class CivitAI_Downloader:
             self.dump_file_details()
             return True
         else:
-            os.remove(save_path)  # Remove Invalid / Broken / Insecure download file
+            os.remove(save_path) 
             raise Exception(
                 f"{ERR_PREFIX}{self.type} file's SHA256 does not match expected value after retry. Aborting download."
             )
