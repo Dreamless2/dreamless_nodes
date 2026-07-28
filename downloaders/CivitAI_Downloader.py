@@ -141,8 +141,6 @@ class CivitAI_Downloader:
 
                     del download_history
 
-        # NO CACHE DATA FOUND | DOWNLOAD MODEL DETAILS
-
         model_url = f"{self.api}/models/{self.model_id}"
         response = requests.get(model_url)
 
