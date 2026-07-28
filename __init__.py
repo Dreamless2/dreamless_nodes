@@ -97,7 +97,6 @@ try:
     )
 
     NODE_CLASS_MAPPINGS = {
-        # loaders
         "Dreamless_Loader": Dreamless_Loader,
         "Dreamless_Loader_CivitAI": Dreamless_Loader_CivitAI,
         "Dreamless_LORA_Loader": Dreamless_LORA_Loader,
