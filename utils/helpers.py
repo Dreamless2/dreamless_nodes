@@ -11,9 +11,7 @@ if not ENV_PATH.exists():
 
 load_dotenv(dotenv_path=ENV_PATH)
 
-
 def get_api_key(provider="civitai") -> str:
-    """Reads the API key for the specified provider from the .env file."""
     load_dotenv(dotenv_path=ENV_PATH)
     key_name = f"{provider.upper()}_API_KEY"
     return os.getenv(key_name, "").strip()
