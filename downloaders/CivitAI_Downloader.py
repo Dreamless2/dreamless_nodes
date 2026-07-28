@@ -349,7 +349,7 @@ class CivitAI_Downloader:
         save_path = os.path.join(
             self.model_path, self.name
         ) 
-
+        
         if os.path.exists(save_path):
             print(f"{MSG_PREFIX}{self.type} file already exists at: {save_path}")
             self.dump_file_details()
@@ -361,9 +361,7 @@ class CivitAI_Downloader:
                 print(
                     f"{ERR_PREFIX}Existing {self.type} file's SHA256 does not match. Retrying download..."
                 )
-
-        # NO MODEL OR MODEL DATA AVAILABLE -- DOWNLOAD MODEL FROM CIVITAI
-
+      
         response = requests.head(self.download_url)
         total_file_size = total_file_size = get_total_file_size(self.download_url)
 
