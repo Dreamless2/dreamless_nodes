@@ -24,7 +24,7 @@ class Dreamless_HF_Downloader:
         self.timeout = timeout
         self.download_url = None
         self.remote_size = 0
- 
+
     @staticmethod
     def format_time(seconds):
         seconds = int(seconds)
@@ -55,7 +55,7 @@ class Dreamless_HF_Downloader:
         }
         if self.token:
             headers["Authorization"] = f"Bearer {self.token}"
-        return headers   
+        return headers
 
     def details(self):
         """Resolve the final download URL and remote file size via HEAD request."""
@@ -87,7 +87,7 @@ class Dreamless_HF_Downloader:
 
         file_basename = os.path.basename(self.filename)
         filepath = os.path.join(save_path, file_basename)
-    
+
         if os.path.exists(filepath):
             local_size = os.path.getsize(filepath)
             if self.remote_size > 0 and local_size >= self.remote_size * 0.99:
@@ -97,7 +97,7 @@ class Dreamless_HF_Downloader:
                 return filepath
 
         print(f"[Dreamless] Multipart download: {self.repo_id}/{self.filename}")
-        
+
         try:
             req = urllib.request.Request(
                 self.download_url, headers=self.headers, method="HEAD"
@@ -114,7 +114,7 @@ class Dreamless_HF_Downloader:
         if total_size <= 0:
             raise RuntimeError("[Dreamless] Failed to determine the size of the file.")
 
-        total_text = self.format_size(total_size)     
+        total_text = self.format_size(total_size)
 
         with open(filepath, "wb") as f:
             f.truncate(total_size)
