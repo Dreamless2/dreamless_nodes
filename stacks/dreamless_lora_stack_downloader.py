@@ -167,7 +167,7 @@ class Dreamless_LORA_Stack_Downloader:
                 continue
 
             if any(item[0] == lora_name for item in result_stack):
-                print(f"{MSG_PREFIX}LoRA already exists.")
+                print(f"{MSG_PREFIX}LoRA/ already exists.")
                 continue
 
             result_stack.append((lora_name, strength_model, strength_clip))
