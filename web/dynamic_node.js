@@ -9,7 +9,6 @@ function showWidget(w) {
     w.computeSize = undefined;
 }
 
-
 function registerDynamicLoras(nodeName) {
     app.registerExtension({
         name: `Dreamless.DynamicLoras.${nodeName}`,
