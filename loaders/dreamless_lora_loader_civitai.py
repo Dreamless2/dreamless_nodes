@@ -98,7 +98,7 @@ class Dreamless_LORA_Loader_CivitAI:
                 raise RuntimeError(f"{MSG_PREFIX}Failed to download LoRA.")
             lora_name = downloader.name
         else:
-            print(f"{MSG_PREFIX}Loading LoRA from disk: {lora_name}: model: {model}")  # Added model information
+            print(f"{MSG_PREFIX}Loading LoRA from disk: {lora_name}: model: {lora_}")
 
         if not self.lora_loader:
             self.lora_loader = LoraLoader()
