@@ -324,9 +324,7 @@ class CivitAI_Downloader:
                 return self.file_size
 
             return None
-
-        # RESOLVE MODEL ID/VERSION TO FILENAME
-
+ 
         model_name = self.model_cached_name(self.model_id, self.version)
 
         if model_name:
