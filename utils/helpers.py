@@ -127,7 +127,6 @@ def parse_hf(value: str):
     """
     value = value.strip()
 
-    # URL completa
     if value.startswith("https://huggingface.co/"):
         # https://huggingface.co/{repo_owner}/{repo_name}/resolve/{revision}/{filename}
         parts = value.replace("https://huggingface.co/", "").split("/")
