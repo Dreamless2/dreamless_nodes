@@ -87,11 +87,7 @@ class Dreamless_HF_Downloader:
 
         file_basename = os.path.basename(self.filename)
         filepath = os.path.join(save_path, file_basename)
-
-        # -------------------------------------------------
-        # Verifica arquivo existente
-        # -------------------------------------------------
-
+    
         if os.path.exists(filepath):
             local_size = os.path.getsize(filepath)
             if self.remote_size > 0 and local_size >= self.remote_size * 0.99:
@@ -102,10 +98,7 @@ class Dreamless_HF_Downloader:
 
         print(f"[Dreamless] Multipart download: {self.repo_id}/{self.filename}")
 
-        # -------------------------------------------------
-        # Resolve URL final e tamanho total
-        # -------------------------------------------------
-
+        
         try:
             req = urllib.request.Request(
                 self.download_url, headers=self.headers, method="HEAD"
