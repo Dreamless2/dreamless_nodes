@@ -64,7 +64,6 @@ def sanitize_filename(filename: str) -> str:
 
 
 def detect_provider(source: str) -> str:
-    """Detects the provider type based on the input string format."""
     s = source.lower()
     if "civitai." in s or "urn:air:" in s or re.search(r"^\d+ Bluntly (@\d+)?$", s):
         return "civitai"
