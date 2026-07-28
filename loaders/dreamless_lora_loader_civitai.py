@@ -99,6 +99,7 @@ class Dreamless_LORA_Loader_CivitAI:
             lora_name = downloader.name
         else:
             print(f"{MSG_PREFIX}Loading LoRA from disk: {lora_name}: model: {strength_model}, clip: {strength_clip}")
+            print(f"\33[1m\33[36m[Dreamless] Load LoRA/LyCORIS: \33[0m{lora_name}: model: {strength_model}, clip: {strength_clip}")
 
         if not self.lora_loader:
             self.lora_loader = LoraLoader()
