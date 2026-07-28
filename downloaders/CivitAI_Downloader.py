@@ -425,8 +425,6 @@ class CivitAI_Downloader:
                 f"{ERR_PREFIX}{self.type} file's SHA256 does not match expected value after retry. Aborting download."
             )
 
-    # DUMP MODEL DETAILS TO DOWNLOAD HISTORY
-
     def dump_file_details(self):
         history_file_path = os.path.join(ROOT_PATH, "download_history.json")
 
