@@ -57,9 +57,7 @@ class Dreamless_HF_Downloader:
             headers["Authorization"] = f"Bearer {self.token}"
         return headers
 
-    # =========================================================
-    # DETAILS
-    # =========================================================
+   
 
     def details(self):
         """Resolve the final download URL and remote file size via HEAD request."""
