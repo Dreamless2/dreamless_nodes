@@ -299,7 +299,7 @@ class Dreamless_Diffusion_Model_DualCLIP_Loader_CivitAI:
 
                 if lora_name and lora_name != "none":
                     print(
-                        f"{MSG_PREFIX}Loading LoRA from stack: {lora_name} (M:{strength_model}, C:{strength_clip})"
+                        f"{MSG_PREFIX}Loading LoRA from stack: {lora_name} (model:{strength_model}, C:{strength_clip})"
                     )
                     model, clip = self.lora_loader.load_lora(
                         model=model,
