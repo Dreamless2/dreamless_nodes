@@ -188,7 +188,7 @@ class Dreamless_Loader_Singleton:
                 save_path=download_path,
             )
             if not dl.download():
-                raise RuntimeError(f"{MSG_PREFIX} Failed to download checkpoint {air}")
+                raise RuntimeError(f"{MSG_PREFIX} Failed to download checkpoint.")
             return dl.name
 
     def _download_vae(self, air: str, civitai_token: str, hf_token: str) -> str | None:
