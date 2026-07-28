@@ -514,8 +514,6 @@ class CivitAI_Downloader:
                         return os.path.join(root, file)
         return None
 
-    # CALCULATE SHA256
-
     @staticmethod
     def calculate_sha256(file_path):
         sha256_hash = hashlib.sha256()
@@ -526,7 +524,7 @@ class CivitAI_Downloader:
             return sha256_hash.hexdigest().upper()
         return 0
 
-    # STATIC HASH LOOKUP FOR MANUAL LOADING
+
     @staticmethod
     def sha256_lookup(file_path):
         hash_value = CivitAI_Downloader.calculate_sha256(file_path)
