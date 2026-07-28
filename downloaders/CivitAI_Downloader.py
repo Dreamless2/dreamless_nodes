@@ -593,8 +593,6 @@ class CivitAI_Downloader:
 
         return (None, None, None)
 
-    # STATIC DOWNLOAD HISTORY PUSH
-
     @staticmethod
     def push_download_history(model_id, model_type, file_details):
         history_file_path = os.path.join(ROOT_PATH, "download_history.json")
