@@ -107,7 +107,6 @@ def parse_air(air_string: str):
 
 
 def is_hf(value: str) -> bool:
-    """Detecta se o valor é uma referência HuggingFace (repo_id/filename)."""
     value = value.strip()
     return (
         value.startswith("hf:")
