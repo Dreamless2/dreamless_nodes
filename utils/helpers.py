@@ -57,7 +57,6 @@ def model_path(filename: str, search_paths: list[str]):
 
 
 def sanitize_filename(filename: str) -> str:
-    """Sanitizes a filename by replacing invalid characters with underscores and stripping whitespace."""
     invalid = '<>:"/\\|?*'
     for c in invalid:
         filename = filename.replace(c, "_")
