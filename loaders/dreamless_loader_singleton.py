@@ -179,7 +179,7 @@ class Dreamless_Loader_Singleton:
         else:
             ckpt_id, version_id = parse_air(air)
             if not ckpt_id:
-                raise ValueError(f"{MSG_PREFIX} Invalid CitiAIR inválido: {air}")
+                raise ValueError(f"{MSG_PREFIX} Invalid CivitAI AIR: {air}")
             dl = Dreamless_Downloader(
                 model_id=ckpt_id,
                 model_version=version_id,
