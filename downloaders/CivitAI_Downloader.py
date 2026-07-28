@@ -346,10 +346,8 @@ class CivitAI_Downloader:
                 self.name = self.download_url.split("/")[-1]
 
         print(f"{MSG_PREFIX}Downloading `{self.name}` from `{self.download_url}`")
-        save_path = os.path.join(
-            self.model_path, self.name
-        ) 
-        
+        save_path = os.path.join(self.model_path, self.name)
+
         if os.path.exists(save_path):
             print(f"{MSG_PREFIX}{self.type} file already exists at: {save_path}")
             self.dump_file_details()
@@ -361,7 +359,7 @@ class CivitAI_Downloader:
                 print(
                     f"{ERR_PREFIX}Existing {self.type} file's SHA256 does not match. Retrying download..."
                 )
-      
+
         response = requests.head(self.download_url)
         total_file_size = total_file_size = get_total_file_size(self.download_url)
 
@@ -420,7 +418,7 @@ class CivitAI_Downloader:
             self.dump_file_details()
             return True
         else:
-            os.remove(save_path) 
+            os.remove(save_path)
             raise Exception(
                 f"{ERR_PREFIX}{self.type} file's SHA256 does not match expected value after retry. Aborting download."
             )
