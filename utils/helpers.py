@@ -138,11 +138,9 @@ def parse_hf(value: str):
             return repo_id, filename, revision
         return None, None, "main"
 
-    # Remove prefixo hf:
     if value.startswith("hf:"):
         value = value[3:]
 
-    # revision opcional no final: repo/filename@revision
     revision = "main"
     if "@" in value:
         value, revision = value.rsplit("@", 1)
