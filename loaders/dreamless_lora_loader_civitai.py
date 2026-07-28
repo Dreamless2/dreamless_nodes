@@ -95,7 +95,7 @@ class Dreamless_LORA_Loader_CivitAI:
                 save_path=resolved_download_path,
             )
             if not downloader.download():
-                raise RuntimeError(f"{MSG_PREFIX}Failed to download LoRA.")
+                raise RuntimeError(f"{MSG_PREFIX}Failed to download LoRA/LyCORIS model.")
             lora_name = downloader.name
         else:
             print(f"{MSG_PREFIX}Loading LoRA from disk: {lora_name}")
