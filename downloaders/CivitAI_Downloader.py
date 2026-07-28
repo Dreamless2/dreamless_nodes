@@ -73,6 +73,7 @@ class CivitAI_Downloader:
         self.details()
 
     def details(self):
+        
         model_name = self.model_cached_name(self.model_id, self.version)
         if model_name and self.model_exists_disk(model_name):
             history_file_path = os.path.join(ROOT_PATH, "download_history.json")
