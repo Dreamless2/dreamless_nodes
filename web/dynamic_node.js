@@ -285,7 +285,6 @@ app.registerExtension({
     },
 });
 
-
 const NODE_NAME = "Dreamless_Loader_Singleton";
 
 const FIELD_DEFAULTS = {
