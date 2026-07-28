@@ -1,8 +1,9 @@
 import os
-import requests
 import time
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
+
+import requests
 
 
 class Dreamless_Downloader:
@@ -220,6 +221,5 @@ class Dreamless_Downloader:
 
         print()
         print(f"[Dreamless] Model {self.name} downloaded successfully to {filepath}")
-        
-        return filepath    
-    
+
+        return filepath
