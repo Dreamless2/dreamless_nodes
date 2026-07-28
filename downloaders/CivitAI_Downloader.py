@@ -467,8 +467,6 @@ class CivitAI_Downloader:
         with open(history_file_path, "w", encoding="utf-8") as history_file:
             json.dump(download_history, history_file, indent=4, ensure_ascii=False)
 
-    # RESOLVE ID/VERSION TO FILENAME
-
     def model_cached_name(self, model_id, version_id):
         history_file_path = os.path.join(ROOT_PATH, "download_history.json")
 
