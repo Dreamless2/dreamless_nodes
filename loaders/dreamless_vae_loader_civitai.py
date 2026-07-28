@@ -97,7 +97,7 @@ class Dreamless_VAE_Loader_CivitAI:
                 )
                 final_path = downloader.download()
             except Exception as e:
-                print(f"{MSG_PREFIX}Multipart VAE download failed: {e}")
+                print(f"{MSG_PREFIX}Download failed: {e}")
                 return (None,)
 
             if final_path and os.path.isfile(final_path):
