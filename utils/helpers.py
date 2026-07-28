@@ -117,7 +117,7 @@ def is_hf(value: str) -> bool:
 
 def parse_hf(value: str):
     """
-    Extract (repo_id, filename, revision) from e uma referência HF.
+    Extract (repo_id, filename, revision) from URL HF.
 
     Formatos aceitos:
         hf:black-forest-labs/FLUX.1-dev/flux1-dev.safetensors
