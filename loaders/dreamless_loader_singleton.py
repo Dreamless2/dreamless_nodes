@@ -166,7 +166,7 @@ class Dreamless_Loader_Singleton:
         if is_hf(air):
             repo_id, filename, revision = parse_hf(air)
             if not repo_id or not filename:
-                raise ValueError(f"{MSG_PREFIX} Invalid HF : {air}")
+                raise ValueError(f"{MSG_PREFIX} Invalid HF AIR: {air}")
             dl = Dreamless_HF_Downloader(
                 repo_id=repo_id,
                 filename=filename,
