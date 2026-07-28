@@ -305,9 +305,7 @@ class CivitAI_Downloader:
                 raise Exception(
                     f"{ERR_PREFIX}Unable to re-establish connection to CivitAI."
                 )
-
-        # GET FILE SIZE
-
+        
         def get_total_file_size(url):
             response = requests.get(url, stream=True)
             content_length = response.headers.get("Content-Length")
