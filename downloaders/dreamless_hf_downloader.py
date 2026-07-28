@@ -186,5 +186,5 @@ class Dreamless_HF_Downloader:
                 raise RuntimeError(f"[Dreamless] Download part failed: {exc}")
 
         print()
-        print(f"[Dreamless] {file_basename} downloaded successfully to {filepath}")
+        print(f"[Dreamless] Model {file_basename} downloaded successfully to {filepath}")
         return filepath
