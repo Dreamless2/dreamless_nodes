@@ -23,7 +23,6 @@ def set_api_key(provider: str, key: str):
     set_key(str(ENV_PATH), key_name, key.strip())
     os.environ[key_name] = key.strip()
 
-
 def short_paths_map(paths: list[str]) -> dict:
     result = {}
     for path_str in paths:
