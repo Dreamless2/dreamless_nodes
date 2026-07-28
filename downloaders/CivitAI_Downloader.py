@@ -289,8 +289,6 @@ class CivitAI_Downloader:
                             f"{ERR_PREFIX}Unable to establish download connection."
                         )
                 except (requests.exceptions.RequestException, Exception):
-                    # We shouldn't warn on chunk loss, since end chunks may not be able to be established due to remaining filesize
-                    # print(f"{WARN_PREFIX}Chunk {chunk_id} connection lost")
                     total_pbar.update()
                     time.sleep(retry_delay)
                     retries += 1
