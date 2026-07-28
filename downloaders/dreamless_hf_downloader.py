@@ -78,10 +78,6 @@ class Dreamless_HF_Downloader:
             "remote_size": self.remote_size,
         }
 
-    # =========================================================
-    # DOWNLOAD
-    # =========================================================
-
     def download(self):
         if not self.download_url:
             self.details()
@@ -89,7 +85,6 @@ class Dreamless_HF_Downloader:
         save_path = str(self.save_path) if self.save_path else "."
         os.makedirs(save_path, exist_ok=True)
 
-        # usa só o basename do filename (pode vir com subpasta ex: "weights/model.safetensors")
         file_basename = os.path.basename(self.filename)
         filepath = os.path.join(save_path, file_basename)
 
