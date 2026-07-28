@@ -132,11 +132,7 @@ class Dreamless_HF_Downloader:
         if total_size <= 0:
             raise RuntimeError("[Dreamless] Failed to determine the size of the file.")
 
-        total_text = self.format_size(total_size)
-
-        # -------------------------------------------------
-        # Pre-aloca arquivo
-        # -------------------------------------------------
+        total_text = self.format_size(total_size)     
 
         with open(filepath, "wb") as f:
             f.truncate(total_size)
