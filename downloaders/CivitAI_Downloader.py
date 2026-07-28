@@ -350,8 +350,6 @@ class CivitAI_Downloader:
             else:
                 self.name = self.download_url.split("/")[-1]
 
-        # NO MODEL FOUND! | DOWNLOAD MODEL FROM CIVITAI
-
         print(f"{MSG_PREFIX}Downloading `{self.name}` from `{self.download_url}`")
         save_path = os.path.join(
             self.model_path, self.name
