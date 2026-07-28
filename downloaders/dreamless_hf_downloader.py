@@ -137,10 +137,7 @@ class Dreamless_HF_Downloader:
         with open(filepath, "wb") as f:
             f.truncate(total_size)
 
-        # -------------------------------------------------
-        # Multipart
-        # -------------------------------------------------
-
+        # ---------------------------------------
         num_threads = 8
         part_size = total_size // num_threads
         ranges = []
