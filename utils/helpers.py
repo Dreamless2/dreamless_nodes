@@ -147,7 +147,6 @@ def parse_hf(value: str):
     if "@" in value:
         value, revision = value.rsplit("@", 1)
 
-    # separa repo_id (owner/repo) do filename (pode ter subpastas)
     parts = value.split("/")
     if len(parts) < 3:
         return None, None, revision
