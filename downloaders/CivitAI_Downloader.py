@@ -491,8 +491,6 @@ class CivitAI_Downloader:
                                     return name
         return None
 
-    # CEHCK FOR MODEL ON DISK
-
     def model_exists_disk(self, name):
         for path in self.model_paths:
             if path and name:
@@ -504,7 +502,6 @@ class CivitAI_Downloader:
                         return full_path
         return False
 
-    # CEHCK FOR MODEL ON DISK
 
     def model_path(filename, search_paths):
         filename, _ = os.path.splitext(filename)
