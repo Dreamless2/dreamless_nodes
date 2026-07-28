@@ -502,7 +502,6 @@ class CivitAI_Downloader:
                         return full_path
         return False
 
-
     def model_path(filename, search_paths):
         filename, _ = os.path.splitext(filename)
         for path in search_paths:
