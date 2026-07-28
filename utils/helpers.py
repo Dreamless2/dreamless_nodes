@@ -42,7 +42,6 @@ def short_paths_map(paths: list[str]) -> dict:
 
 
 def model_path(filename: str, search_paths: list[str]):
-    """Returns the full path to the model file with the specified filename in the search paths."""
     if not filename:
         return None
     filename = filename.lower().strip()
