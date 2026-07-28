@@ -1,6 +1,7 @@
 import os
 import re
 from pathlib import Path
+
 from dotenv import load_dotenv, set_key
 
 ROOT_PATH = Path(__file__).resolve().parent.parent
@@ -10,6 +11,7 @@ if not ENV_PATH.exists():
     ENV_PATH.touch()
 
 load_dotenv(dotenv_path=ENV_PATH)
+
 
 def get_api_key(provider="civitai") -> str:
     load_dotenv(dotenv_path=ENV_PATH)
@@ -22,6 +24,7 @@ def set_api_key(provider: str, key: str):
     key_name = f"{provider.upper()}_API_KEY"
     set_key(str(ENV_PATH), key_name, key.strip())
     os.environ[key_name] = key.strip()
+
 
 def short_paths_map(paths: list[str]) -> dict:
     result = {}
@@ -98,11 +101,12 @@ def parse_air(air_string: str):
 
     if "@" in air:
         model, version = air.split("@", 1)
-        return int(model) if model.isdigit() else None, int(
-            version
-        ) if version.isdigit() else None
+        return int(model) if model.isdigit() else None, (
+            int(version) if version.isdigit() else None
+        )
 
     return int(air) if air.isdigit() else None, None
+
 
 def is_hf(value: str) -> bool:
     """Detecta se o valor é uma referência HuggingFace (repo_id/filename)."""
@@ -136,8 +140,7 @@ def parse_hf(value: str):
             return repo_id, filename, revision
         return None, None, "main"
 
-    if value.startswith("hf:"):
-        value = value[3:]
+    value = value.removeprefix("hf:")
 
     revision = "main"
     if "@" in value:
