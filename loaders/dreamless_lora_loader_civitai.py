@@ -79,7 +79,7 @@ class Dreamless_LORA_Loader_CivitAI:
             lora_id, version_id = parse_air(lora_air)
             if not lora_id:
                 raise ValueError(
-                    f"{MSG_PREFIX}Please provide a valid LoRA AIR or select a local file."
+                    f"{MSG_PREFIX}Please provide a valid LoRA/ AIR or select a local file."
                 )
 
             lora_paths = short_paths_map(LORAS)
