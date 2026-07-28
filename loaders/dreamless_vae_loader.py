@@ -27,7 +27,7 @@ class Dreamless_VAE_Loader:
 
     def load_vae_model(self, vae_name):
         if vae_name == "none":
-            raise ValueError(f"{MSG_PREFIX}Please select a valid VAE model.")
+            raise ValueError(f"{MSG_PREFIX}Please select a valid VAE.")
 
         if not self.loader:
             self.loader = VAELoader()
