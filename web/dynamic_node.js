@@ -424,7 +424,6 @@ app.registerExtension({
         if (node.comfyClass !== LORA_STACK_NODE_NAME) return;
 
         for (const widget of node.widgets ?? []) {
-            // Static fields
             if (widget.name in STATIC_DEFAULTS) {
                 const defaultValue = STATIC_DEFAULTS[widget.name];
                 const originalCallback = widget.callback;
