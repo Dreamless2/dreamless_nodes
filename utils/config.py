@@ -41,6 +41,7 @@ BASE_RESOLUTIONS = [
     (1920, 864),   
     (1920, 1080),
     (2560, 1440),
+    ()
 ]
 
 MAX_RESOLUTION = 8192
