@@ -437,7 +437,6 @@ app.registerExtension({
                 continue;
             }
 
-            // Dynamic lora_air_N fields
             for (const [prefix, defaultValue] of Object.entries(DYNAMIC_PREFIX_DEFAULTS)) {
                 if (widget.name.startsWith(prefix)) {
                     const originalCallback = widget.callback;
