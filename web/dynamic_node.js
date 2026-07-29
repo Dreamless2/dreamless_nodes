@@ -155,7 +155,7 @@ app.registerExtension({
             "Dreamless_Smart_Latent": [350, 220],
             "Dreamless_VAE_Nodes": [280, 120],
             "Dreamless_Save_Image_Preview": [370, 540],
-            "Dreamless_Load_Image": [400, 460],
+            "Dreamless_Load_Image": [400, 500],
             "Dreamless_KSampler_Simple": [290, 330],
             "Dreamless_KSampler_Full": [290, 390],
             "Dreamless_KSampler_Hires": [340, 560],
