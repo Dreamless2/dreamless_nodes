@@ -146,7 +146,7 @@ app.registerExtension({
             "Dreamless_Checkpoint_Loader": [300, 360],
             "Dreamless_LORA_Loader": [300, 360],
             "Dreamless_VAE_Loader": [360, 180],
-            "Dreamless_Image_Loader": [380, 300],
+            "Dreamless_Image_Loader": [400, 300],
             "Dreamless_Loader_CivitAI": [450, 800],
             "Dreamless_Diffusion_Model_DualCLIP_Loader_CivitAI": [450, 800],
             "Dreamless_Diffusion_Model_CLIP_Loader_CivitAI": [450, 800],
